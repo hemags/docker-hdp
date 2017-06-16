@@ -11,7 +11,7 @@ services:
     hostname: postgres
     domainname: dev
   ambari-server.dev:
-    build: 
+    build:
       context: ../../containers/ambari-server
       args:
        - AMBARI_REPO_URL=${AMBARI_REPO_URL}
@@ -34,6 +34,8 @@ services:
      - dev
     hostname: master0
     domainname: dev
+    volumes:
+      - /hadoop:/hadoop
     ports:
      # ZooKeeper
      - "2181:2181"
@@ -91,6 +93,8 @@ services:
      - dev
     hostname: dn0
     domainname: dev
+    volumes:
+      - /hadoop:/hadoop
     ports:
      # HDFS
      - "50070:50070"
